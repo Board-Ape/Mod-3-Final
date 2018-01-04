@@ -7,5 +7,4 @@ const rootReducer = combineReducers({
   houseData
 });
 
-
 export default rootReducer;

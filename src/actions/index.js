@@ -15,4 +15,32 @@ export const fetchHouses = () => async (dispatch) => {
   }
 };
 
-// Cool!
+export const fetchMembersSuccess = (members) => ({
+  type: 'MEMBER_SUCCESS',
+  members
+});
+
+export const fetchMembers = (swornMembers) => {
+  return dispatch => {
+
+    const unresolvedPromises = swornMembers.map( memberURL =>{
+      console.log(memberURL);
+      return fetch('http://localhost:3001/api/v1/character', {
+        method: 'POST',
+        body: {url: memberURL }
+      })
+        .then(response => console.log(response));
+    });
+
+    const promiseAll = Promise.all(unresolvedPromises);
+
+    promiseAll.then( membersArray => {
+      dispatch(fetchMembersSuccess(membersArray));
+    });
+
+  };
+  // fetch initial api
+  // map through sworn members and make fetch post to characters
+  // dispatch array of members to store
+
+};
