@@ -3,8 +3,14 @@ import PropTypes, { shape, func, string } from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { fakeAction } from '../../actions';
+import { fakeAction, fetchHouses } from '../../actions';
+
+
 class App extends Component {
+
+  componentDidMount() {
+    this.props.getHouseData();
+  }
 
   render() {
     return (
@@ -26,11 +32,14 @@ class App extends Component {
 
 App.propTypes = {
   fake: shape({ fake: string }),
-  fakeAction: func.isRequired
+  fakeAction: func.isRequired,
+  getHouseData: PropTypes.func
 };
 
 const mapStateToProps = ({ fake }) => ({ fake });
-const mapDispatchToProps = dispatch => ({ fakeAction:
-  () => dispatch(fakeAction())
+
+const mapDispatchToProps = dispatch => ({
+  fakeAction: () => dispatch(fakeAction()),
+  getHouseData: () => dispatch(fetchHouses())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
