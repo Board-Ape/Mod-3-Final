@@ -19,4 +19,20 @@ describe('actions', () => {
     expect(actions.fetchHousesSuccess(houses)).toEqual(expectedAction);
   });
 
+  it('should create an action to reset view to houses', () => {
+    const expectedAction = {
+      type: "RESET_VIEW"
+    };
+    expect(actions.resetViewToHouses()).toEqual(expectedAction);
+  });
+
+  it('should create an action when fetch members successfully', () => {
+    const members = ['Name', 'Ran'];
+    const expectedAction = {
+      type: 'MEMBER_SUCCESS',
+      members
+    };
+    expect(actions.fetchMembersSuccess(members)).toEqual(expectedAction);
+  });
+
 });
