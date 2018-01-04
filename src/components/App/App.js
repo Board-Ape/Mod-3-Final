@@ -42,4 +42,5 @@ const mapDispatchToProps = dispatch => ({
   fakeAction: () => dispatch(fakeAction()),
   getHouseData: () => dispatch(fetchHouses())
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(App);
