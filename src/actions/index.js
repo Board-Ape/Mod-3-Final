@@ -8,7 +8,7 @@ export const fetchHousesSuccess = (houses) => ({
 export const fetchHouses = () => async (dispatch) => {
   try {
     const initialFetch = await fetch('http://localhost:3001/api/v1/houses');
-    const fetchObject = await initialFetch.json();
+    const fetchObject = await console.log(initialFetch.json());
     dispatch(fetchHousesSuccess(fetchObject));
   } catch (error) {
     return Error(error);
