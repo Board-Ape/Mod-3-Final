@@ -10,4 +10,13 @@ describe('All Reducers', () => {
 
     expect(houseData(undefined, [])).toEqual(expectedState);
   });
+
+  it('should return a new state with an action', () => {
+    const mockHousesObject = {gramps: 'grump', gum: 'bum'};
+    const expected = mockHousesObject;
+
+    expect(houseData(
+      {}, actions.fetchHousesSuccess(mockHousesObject))).toEqual(expected);
+  });
+
 });
