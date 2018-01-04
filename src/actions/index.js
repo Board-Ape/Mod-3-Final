@@ -14,3 +14,5 @@ export const fetchHouses = () => async (dispatch) => {
     return Error(error);
   }
 };
+
+// Cool!
