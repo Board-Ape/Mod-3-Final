@@ -24,12 +24,13 @@ export const fetchMembers = (swornMembers) => {
   return dispatch => {
 
     const unresolvedPromises = swornMembers.map( memberURL =>{
-      console.log(memberURL);
+      const bodyObject = JSON.stringify({ url: memberURL });
       return fetch('http://localhost:3001/api/v1/character', {
         method: 'POST',
-        body: {url: memberURL }
+        headers: {"Content-Type": "application/json"},
+        body: bodyObject
       })
-        .then(response => console.log(response));
+        .then(response => response.json());
     });
 
     const promiseAll = Promise.all(unresolvedPromises);
@@ -37,10 +38,9 @@ export const fetchMembers = (swornMembers) => {
     promiseAll.then( membersArray => {
       dispatch(fetchMembersSuccess(membersArray));
     });
-
   };
-  // fetch initial api
-  // map through sworn members and make fetch post to characters
-  // dispatch array of members to store
-
 };
+
+export const resetViewToHouses = () => ({
+  type: 'RESET_VIEW'
+});
