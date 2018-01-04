@@ -3,7 +3,7 @@ import PropTypes, { shape, func, string } from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { fakeAction, fetchHouses } from '../../actions';
+import { fakeAction, fetchHouses } from '../../actions/index';
 import CardContainer from '../CardContainer/CardContainer';
 
 
@@ -15,7 +15,6 @@ class App extends Component {
 
   render() {
     //Create a conditional rendering showing the GIF
-    //Or showing the cards being displayed after fetch Success
     return (
       <div className='App'>
         <div className='App-header'>
@@ -23,7 +22,7 @@ class App extends Component {
           <h2>Welcome to Westeros</h2>
         </div>
         <div className='Display-info'>
-          <CardContainer />
+          <CardContainer houseData={this.props.houseData}/>
         </div>
       </div>
     );
@@ -33,7 +32,8 @@ class App extends Component {
 App.propTypes = {
   fake: shape({ fake: string }),
   fakeAction: func.isRequired,
-  getHouseData: PropTypes.func
+  getHouseData: PropTypes.func,
+  houseData: PropTypes.object
 };
 
 const mapStateToProps = store => ({
