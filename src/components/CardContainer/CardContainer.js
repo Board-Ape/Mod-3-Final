@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card';
 import './CardContainer.css';
+import '../App/App.css';
 
 class CardContainer extends Component {
 
@@ -14,7 +15,7 @@ class CardContainer extends Component {
   render() {
     if (this.props.houseData) {
       return (
-        <div>
+        <div className='card-container'>
           {this.renderCards()}
         </div>
       );
