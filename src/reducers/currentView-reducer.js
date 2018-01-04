@@ -1,4 +1,4 @@
-const currentView = (state='houses', action) => {
+const currentView = (state = 'houses', action) => {
   switch (action.type) {
   case 'HOUSES_SUCCESS':
     return 'houses';

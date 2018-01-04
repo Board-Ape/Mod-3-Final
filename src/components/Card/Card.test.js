@@ -1,20 +1,14 @@
-// import React from "react";
-// import Card from './Card';
-// import { shallow } from "enzyme";
-//
-// describe('Card', () => {
-//   const wrapper = shallow(<Card
-//     house = {{
-//       name:'Sam',
-//       founded: '1987',
-//       seats: ['apple', 'banana'],
-//       titles: ['sir', 'onion'],
-//       coatOfArms: 'Drago',
-//       ancestralWeapons: ['sword', 'pick'],
-//       words: ['wisdom']
-//     }}/>);
-//
-//   it('should exist', () => {
-//     expect(wrapper).toBeDefined(true);
-//   });
-// });
+import React from 'react';
+import Card from '../Card/Card';
+import { shallow } from 'enzyme';
+import mockData from './mockData';
+
+describe('Card Tests', () => {
+
+  it('should render component and match snapshot', () => {
+    const renderedCard = shallow(
+      <Card house={mockData[0]} />);
+
+    expect(renderedCard).toMatchSnapshot();
+  });
+});
