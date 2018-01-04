@@ -40,8 +40,9 @@ export const fetchMembers = (swornMembers) => {
     });
 
   };
-  // fetch initial api
-  // map through sworn members and make fetch post to characters
-  // dispatch array of members to store
+
+  export const resetViewToHouses = () => ({
+    type: 'RESET_VIEW'
+  });
 
 };
