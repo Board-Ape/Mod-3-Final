@@ -21,14 +21,22 @@ const Card = ({ currentView, member, house, getHouseMembers }) => {
         <h1>{house.words}</h1>
       </div>
     );
-  } else if (currentView === 'members') {
+  } else if (currentView === 'members' && member) {
     return (
       <div className='card'>
-        <h1>hi</h1>
+        <h1>{member.name}</h1>
+        <h2>Titles: {member.titles.map( title => {
+          return title;
+        })}</h2>
+      </div>
+    );
+  } else if (!member) {
+    return (
+      <div>
+
       </div>
     );
   }
-
 };
 
 Card.propTypes = {

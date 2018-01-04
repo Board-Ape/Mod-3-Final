@@ -16,7 +16,7 @@ class CardContainer extends Component {
       house={house} />;
   })
 
-  renderMembers = () => this.props.member.map(member => {
+  renderMembers = () => this.props.members.map(member => {
     return <Card
       currentView={this.props.currentView}
       key={member.name}
@@ -28,12 +28,15 @@ class CardContainer extends Component {
       return (
         <div className='card-container'>
           {this.renderCards()}
+          {this.renderMembers()}
         </div>
       );
-    } else if (this.props.currentView === 'members') {
+    } else if (
+      this.props.members && this.props.currentView === 'members'
+    ) {
       return (
         <div>
-          <h1 className='loading'>LOADING</h1>
+          {this.renderMembers()}
         </div>
       );
     }
