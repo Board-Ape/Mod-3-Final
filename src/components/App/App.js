@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { fakeAction, fetchHouses } from '../../actions';
+import CardContainer from '../CardContainer/CardContainer';
 
 
 class App extends Component {
@@ -23,8 +24,7 @@ class App extends Component {
             alert(this.props.fake);
           }}> FAKE ACTION</button>
         </div>
-        <div className='Display-info'>
-        </div>
+        <CardContainer />
       </div>
     );
   }
