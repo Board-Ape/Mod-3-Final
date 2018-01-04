@@ -26,7 +26,7 @@ const Card = ({ currentView, member, house, getHouseMembers }) => {
       <div className='card'>
         <h1>hi</h1>
       </div>
-    )
+    );
   }
 
 };

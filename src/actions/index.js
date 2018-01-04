@@ -38,11 +38,9 @@ export const fetchMembers = (swornMembers) => {
     promiseAll.then( membersArray => {
       dispatch(fetchMembersSuccess(membersArray));
     });
-
   };
-
-  export const resetViewToHouses = () => ({
-    type: 'RESET_VIEW'
-  });
-
 };
+
+export const resetViewToHouses = () => ({
+  type: 'RESET_VIEW'
+});
