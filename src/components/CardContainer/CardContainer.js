@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card';
-import { fetchMembers } from '../../actions';
+import { fetchMembers, resetViewToHouses } from '../../actions';
 import './CardContainer.css';
 import '../App/App.css';
 
@@ -10,6 +10,7 @@ class CardContainer extends Component {
 
   renderCards = () => this.props.houseData.map(house => {
     return <Card
+      resetView={this.props.resetView}
       currentView={this.props.currentView}
       getHouseMembers={this.props.getHouseMembers}
       key={house.name}
@@ -24,18 +25,18 @@ class CardContainer extends Component {
   })
 
   render() {
-    if (this.props.currentView === 'houses', this.props.houseData) {
+    if (this.props.houseData
+      && this.props.currentView === 'houses') {
       return (
         <div className='card-container'>
           {this.renderCards()}
           {this.renderMembers()}
         </div>
       );
-    } else if (
-      this.props.members && this.props.currentView === 'members'
-    ) {
+    }
+    if (this.props.members && this.props.currentView === 'members') {
       return (
-        <div>
+        <div className='card-container'>
           {this.renderMembers()}
         </div>
       );
@@ -50,7 +51,8 @@ const mapStateToProps = (store) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getHouseMembers: (membersURLs) => dispatch(fetchMembers(membersURLs))
+  getHouseMembers: (membersURLs) => dispatch(fetchMembers(membersURLs)),
+  resetView: () => dispatch(resetViewToHouses())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);
@@ -59,5 +61,6 @@ CardContainer.propTypes = {
   houseData: PropTypes.array,
   getHouseMembers: PropTypes.func,
   members: PropTypes.array,
-  currentView: PropTypes.string
+  currentView: PropTypes.string,
+  resetView: PropTypes.func
 };
