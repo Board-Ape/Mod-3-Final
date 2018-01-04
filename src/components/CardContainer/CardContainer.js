@@ -28,7 +28,7 @@ class CardContainer extends Component {
 }
 
 CardContainer.propTypes = {
-  houseData: PropTypes.object
+  houseData: PropTypes.array
 };
 
 export default CardContainer;

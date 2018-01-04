@@ -33,7 +33,7 @@ App.propTypes = {
   fake: shape({ fake: string }),
   fakeAction: func.isRequired,
   getHouseData: PropTypes.func,
-  houseData: PropTypes.object
+  houseData: PropTypes.array
 };
 
 const mapStateToProps = store => ({
