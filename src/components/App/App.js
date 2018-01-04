@@ -5,6 +5,8 @@ import './App.css';
 import { connect } from 'react-redux';
 import { fakeAction, fetchHouses } from '../../actions/index';
 import CardContainer from '../CardContainer/CardContainer';
+import wolf from './wolf.gif';
+
 class App extends Component {
 
   componentDidMount() {
@@ -12,7 +14,7 @@ class App extends Component {
   }
 
   render() {
-    if (this.props.houseData) {
+    if (this.props.houseData){
       return (
         <div className='App'>
           <div className='App-header'>
@@ -27,18 +29,12 @@ class App extends Component {
     } else {
       return (
         <div>
+          <img src={wolf} />
         </div>
       );
     }
   }
 }
-
-App.propTypes = {
-  fake: shape({ fake: string }),
-  fakeAction: func.isRequired,
-  getHouseData: PropTypes.func,
-  houseData: PropTypes.array
-};
 
 const mapStateToProps = store => ({
   houseData: store.houseData
@@ -46,7 +42,18 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   fakeAction: () => dispatch(fakeAction()),
-  getHouseData: () => dispatch(fetchHouses())
+
+  getHouseData: () => {
+    dispatch(fetchHouses());
+  }
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  fake: shape({ fake: string }),
+  fakeAction: func.isRequired,
+  getHouseData: PropTypes.func,
+  houseData: PropTypes.array
+};
