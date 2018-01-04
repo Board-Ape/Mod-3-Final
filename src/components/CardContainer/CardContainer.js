@@ -7,13 +7,31 @@ class CardContainer extends Component {
     super();
   }
 
+  renderCards = () => this.props.houseData.map(house => {
+    return <Card
+      key={house.name}
+      house={house} />;
+  })
+
   render() {
-    return (
-      <div>
-        <Card />
-      </div>
-    );
+    if (this.props.houseData) {
+      return (
+        <div>
+          {this.renderCards()}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <h1>LOADING</h1>
+        </div>
+      );
+    }
   }
 }
+
+CardContainer.propTypes = {
+  houseData: PropTypes.object
+};
 
 export default CardContainer;

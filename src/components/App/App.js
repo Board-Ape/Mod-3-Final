@@ -14,6 +14,8 @@ class App extends Component {
   }
 
   render() {
+    //Create a conditional rendering showing the GIF
+    //Or showing the cards being displayed after fetch Success
     return (
       <div className='App'>
         <div className='App-header'>
@@ -36,7 +38,9 @@ App.propTypes = {
   getHouseData: PropTypes.func
 };
 
-const mapStateToProps = ({ fake }) => ({ fake });
+const mapStateToProps = store => ({
+  houseData: store.houseData
+});
 
 const mapDispatchToProps = dispatch => ({
   fakeAction: () => dispatch(fakeAction()),
