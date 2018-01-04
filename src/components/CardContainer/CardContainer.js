@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import Card from '../Card/Card';
 
 class CardContainer extends Component {
-  constructor() {
-    super();
-  }
 
   renderCards = () => this.props.houseData.map(house => {
     return <Card
