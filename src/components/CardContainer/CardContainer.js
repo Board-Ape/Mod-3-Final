@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card';
+import './CardContainer.css';
 
 class CardContainer extends Component {
 
@@ -20,7 +21,7 @@ class CardContainer extends Component {
     } else {
       return (
         <div>
-          <h1>LOADING</h1>
+          <h1 className='loading'>LOADING</h1>
         </div>
       );
     }
